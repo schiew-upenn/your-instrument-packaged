@@ -9,16 +9,26 @@ not the claude.ai website: the website can't write files to your repo.)*
 ## My four answers (fill these in first)
 
 1. **What it is** — what does my instrument do?
-   > (your answer)
+   > A food recommender for Philly and NYC. It asks which city, then
+   > either shows me what just opened, or asks how I'm feeling, the
+   > occasion, who I'm with and what I want — and gives me one place to
+   > rate. Good picks go on my try list, and next time it asks how it went.
 
 2. **The idea behind it** — how does it help me think better with AI?
-   > (your answer)
+   > On its own, Claude can only guess where I should eat: it doesn't know
+   > my moods, what I've liked, or what opened this week. My server gives
+   > it that record, and the questions make me figure out what I actually
+   > want before it answers.
 
 3. **One wrong thing + one fix** — what broke, and what I did about it:
-   > (your answer)
+   > When I rated a recommendation badly, it banned that restaurant forever
+   > and made me answer all eight questions again. That's not what I want:
+   > now it asks what was wrong ("too loud"), keeps my other answers, and
+   > adjusts in that direction — and the place can come back another day
+   > when it fits.
 
 4. **What feedback I want** — the question I'm ending my show with:
-   > (your answer)
+   > What else could Claude ask me to get a more holistic recommendation?
 
 ## Claude: your instructions
 

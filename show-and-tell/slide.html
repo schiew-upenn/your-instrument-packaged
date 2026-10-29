@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Ways — Show &amp; Tell</title>
+<style>
+  :root {
+    --paper: #f6f1e7;
+    --ink: #141210;
+    --muted: #5d564d;
+    --red: #c8102e;
+    --rule: #141210;
+    --display: "Didot", "Bodoni 72", "Bodoni Moda", "Playfair Display", "Times New Roman", serif;
+    --text: "Baskerville", "Libre Baskerville", Georgia, serif;
+    --label: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: #1d1b18;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  /* One 16:9 page, scaled to fit any screen; all sizes are in cqw. */
+  .page {
+    width: min(100vw, 177.78vh);
+    height: min(100vh, 56.25vw);
+    container-type: size;
+    background: var(--paper);
+    color: var(--ink);
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+  }
+  /* Side margins live on the rows (not the page) so cqw means page width. */
+  .folio, .masthead, .columns { margin: 0 3.2cqw; }
+
+  .folio {
+    margin-top: 2.4cqw;
+    display: flex;
+    justify-content: space-between;
+    font: 600 0.82cqw/1 var(--label);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    padding-bottom: 0.9cqw;
+    border-bottom: 0.08cqw solid var(--rule);
+  }
+  .folio .red { color: var(--red); }
+
+  .masthead {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 3cqw;
+    padding: 1.1cqw 0 1.3cqw;
+    border-bottom: 0.32cqw double var(--rule);
+  }
+  .masthead h1 {
+    font: 400 8.6cqw/0.86 var(--display);
+    letter-spacing: -0.035em;
+  }
+  .masthead h1 em { font-style: italic; color: var(--red); }
+  .dek {
+    max-width: 30cqw;
+    text-align: right;
+    padding-bottom: 0.6cqw;
+  }
+  .dek p {
+    font: italic 400 1.9cqw/1.15 var(--display);
+  }
+  .dek .byline {
+    margin-top: 0.8cqw;
+    font: 600 0.8cqw/1 var(--label);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.12fr;
+    padding: 1.8cqw 0;
+    align-content: start;
+  }
+  .col { padding: 0 1.9cqw; border-left: 0.08cqw solid var(--rule); }
+  .col:first-child { padding-left: 0; border-left: 0; }
+  .col:last-child { padding-right: 0; }
+  .kicker {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7cqw;
+    margin-bottom: 0.9cqw;
+    font: 600 0.82cqw/1 var(--label);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+  .kicker b {
+    font: italic 400 2.1cqw/1 var(--display);
+    letter-spacing: 0;
+    color: var(--red);
+  }
+  .col p {
+    font: 400 1.78cqw/1.36 var(--text);
+    text-wrap: pretty;
+  }
+  .col p::first-letter {
+    float: left;
+    font: 400 4.9cqw/0.8 var(--display);
+    padding: 0.35cqw 0.5cqw 0 0;
+    color: var(--red);
+  }
+
+  .closer {
+    padding: 2cqw 3.2cqw 2.3cqw;
+    background: var(--ink);
+    color: var(--paper);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 3cqw;
+  }
+  .closer .label {
+    font: 600 0.82cqw/1.6 var(--label);
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    border-right: 0.08cqw solid rgba(246, 241, 231, 0.4);
+    padding-right: 3cqw;
+  }
+  .closer .label b {
+    display: block;
+    font: italic 400 3.4cqw/1 var(--display);
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--red);
+    margin-bottom: 0.5cqw;
+  }
+  .closer q {
+    font: italic 400 3.8cqw/1.08 var(--display);
+    letter-spacing: -0.01em;
+    quotes: "\201C" "\201D";
+  }
+  .closer q::before, .closer q::after { color: var(--red); }
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="folio">
+      <span>CIS 7000 · Show &amp; Tell</span>
+      <span class="red">Philadelphia × New York</span>
+      <span>October 2026</span>
+    </div>
+
+    <header class="masthead">
+      <h1>My <em>Ways</em></h1>
+      <div class="dek">
+        <p>A food recommender that remembers how you feel.</p>
+        <div class="byline">By Kathryn Chiew</div>
+      </div>
+    </header>
+
+    <section class="columns">
+      <article class="col">
+        <div class="kicker"><b>01</b>What it is</div>
+        <p>A food recommender for Philly and NYC. It asks which city, then either shows me what just opened, or asks how I'm feeling, the occasion, who I'm with and what I want — and gives me one place to rate. Good picks go on my try list, and next time it asks how it went.</p>
+      </article>
+      <article class="col">
+        <div class="kicker"><b>02</b>The idea behind it</div>
+        <p>On its own, Claude can only guess where I should eat: it doesn't know my moods, what I've liked, or what opened this week. My server gives it that record, and the questions make me figure out what I actually want before it answers.</p>
+      </article>
+      <article class="col">
+        <div class="kicker"><b>03</b>One wrong thing, one fix</div>
+        <p>When I rated a recommendation badly, it banned that restaurant forever and made me answer all eight questions again. That's not what I want: now it asks what was wrong ("too loud"), keeps my other answers, and adjusts in that direction — and the place can come back another day when it fits.</p>
+      </article>
+    </section>
+
+    <footer class="closer">
+      <div class="label"><b>04</b>Your turn</div>
+      <q>What else could Claude ask me to get a more holistic recommendation?</q>
+    </footer>
+  </main>
+</body>
+</html>
