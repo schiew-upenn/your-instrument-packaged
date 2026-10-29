@@ -2,7 +2,7 @@
   "mcpServers": {
     "my-server": {
       "type": "http",
-      "url": "https://YOUR-SERVICE.onrender.com/mcp"
+      "url": "https://your-first-memory-k5t5.onrender.com/mcp"
     }
   }
 }
