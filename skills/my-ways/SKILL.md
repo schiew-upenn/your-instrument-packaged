@@ -1,39 +1,69 @@
 ---
 name: my-ways
-description: "How I like my Philly + NYC food recommender and mood log used. Use when I ask where to eat, what's new or opening in Philly or New York, mention a restaurant I want to try, tell you about a meal I ate, say how I'm feeling, or ask about my week or past meals."
+description: "How I like my Philly + NYC food recommender and mood log used. Use when I ask where to eat, want food recommendations, ask what's new or opening in Philly or New York, mention a restaurant I want to try, tell you about a meal I ate, say how I'm feeling, or ask about my week or past meals."
 ---
 
-**Your first question is always: "NYC or Philly?"** In any conversation
-about food, ask it before anything else — before recommending, before
-fetching news, before saving a place or a meal. Skip it only if I've
-already named the city in what I said. Every tool needs the city.
+Every food conversation goes in this order. Ask ONE question per message,
+short, with a few example answers. If I already answered something, skip it.
+"Skip" is a fine answer.
+
+## 1. City — always first
+
+"NYC or Philly?" Skip it only if I already named the city.
+
+## 2. Follow-ups from last time
+
+Call pending_followups(city). For each place, ask: "Last time I recommended
+X — did you go? How was it?" Record it with follow_up: "tried" with my 1–5
+rating, "not_yet", or "not_going".
+
+## 3. Recommendations or new restaurants?
+
+"Are you looking for food recommendations, or for new restaurants in
+<city>?"
+
+- **New restaurants:** call food_news(city, openings_only=True) and give
+  me the results as they are — date, name, link. No questions, no rating.
+- **Recommendations:** go to step 4.
+
+## 4. The questions (one at a time)
+
+1. How are you feeling? → one of crying, sad, neutral, happy, ecstatic;
+   log it with log_mood (map other words to the nearest, keep mine in
+   the reason, and say which you picked).
+2. What's the occasion? (weeknight dinner, date, celebration, catch-up…)
+3. Are you with anyone — who? (solo, friends, a date, family, coworkers…)
+4. Anything you're craving?
+5. Anything you don't want to eat, or can't? (dislikes, allergies, diet)
+6. What kind of restaurant mood? (cozy, lively, quiet, fancy, casual…)
+7. Budget? ($, $$, $$$, or "treat myself")
+8. Where and when? (neighborhood or how far you'll go; tonight or later;
+   dine in or takeout)
+
+## 5. One recommendation
+
+Call recommend_for_mood(city, mood, craving). Pick ONE place that fits
+every answer, never one under "already rejected". If nothing there fits,
+search the web for a current place you can link — never recommend from
+your own memory. Call record_recommendation, then tell me the place, why
+it fits my answers, and the link, and ask: "How good is this
+recommendation, 1–5?"
+
+## 6. My rating
+
+Call rate_recommendation.
+
+- **1–3:** ask in one line what missed (if I didn't say), then start the
+  whole sequence again from question 1 of step 4.
+- **4–5:** ask "Want me to add it to your try list?" If yes, save_place
+  with the recommendation_id, so you'll ask me how it went next time.
+
+## Always
 
 Only log what I actually ate or actually feel — never plans or "maybe later."
 
-A mood is always one of five: crying, sad, neutral, happy, ecstatic.
-If I name a feeling that isn't one of them ("anxious", "wiped", "fine"),
-map it to the nearest of the five and keep my own word in the reason.
-If I tell you about my day without naming a feeling at all, read the
-feeling from my words yourself.
-
-When I ask where to eat, you also need my mood. If I've said how I feel,
-log it and call recommend_for_mood with the city. If I haven't, ask in
-the same short message as the city question ("NYC or Philly — and how
-are you feeling?"). Don't guess a mood for a recommendation.
-
-Recommend at most three places, and say why each fits my mood. Only
-recommend what the tools returned — never a restaurant from your own
-memory. For anything from the news, give me the article link.
-
-When I mention a place I want to try, offer to save it, with the vibe you
-think fits (comfort, everyday, new, splurge) so I can correct you.
-
-After I eat somewhere, ask for a 1–5 rating if I didn't give one, then
-log the meal with the city and the mood I was in.
-
 After logging or saving, tell me in one line what you saved, with its
-entry id so I can undo it — and for a feeling you read or mapped, which
-of the five you picked, so I can correct you.
+entry id so I can undo it.
 
 Before deleting anything, say which entry and ask me first.
 
