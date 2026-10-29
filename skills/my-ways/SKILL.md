@@ -3,9 +3,11 @@ name: my-ways
 description: "How I like my Philly + NYC food recommender and mood log used. Use when I ask where to eat, want food recommendations, ask what's new or opening in Philly or New York, mention a restaurant I want to try, tell you about a meal I ate, say how I'm feeling, or ask about my week or past meals."
 ---
 
-Every food conversation goes in this order. Ask ONE question per message,
-short, with a few example answers. If I already answered something, skip it.
-"Skip" is a fine answer.
+Every food conversation goes in this order. Ask ONE question at a time,
+as a pop-up of choices above the chat box — your ask-the-user /
+multiple-choice tool (AskUserQuestion in Claude Code) — using the options
+the server gives, and always let me type my own answer. If I already
+answered something, skip it. "Skip" is a fine answer.
 
 ## 1. City — always first
 
