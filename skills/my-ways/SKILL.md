@@ -42,8 +42,10 @@ rating, "not_yet", or "not_going".
 
 ## 5. One recommendation
 
-Call recommend_for_mood(city, mood, craving). Pick ONE place that fits
-every answer, never one under "already rejected". If nothing there fits,
+Call recommend_for_mood with the city and every answer. Pick ONE place
+that fits every answer — not one that missed earlier in this request. A
+place that missed on an earlier day is fine again if today's answers
+avoid what was wrong with it. If nothing there fits,
 search the web for a current place you can link — never recommend from
 your own memory. Call record_recommendation, then tell me the place, why
 it fits my answers, and the link, and ask: "How good is this
@@ -53,8 +55,11 @@ recommendation, 1–5?"
 
 Call rate_recommendation.
 
-- **1–3:** ask in one line what missed (if I didn't say), then start the
-  whole sequence again from question 1 of step 4.
+- **1–3:** ask what was wrong with it (if I didn't say) — too loud, too
+  pricey, wrong food, too far? Don't re-ask the questions. Keep all my
+  answers, change only what my feedback points to, tell me in one line
+  how you're adjusting ("going quieter and cheaper"), and recommend a
+  different place. Rate that one the same way.
 - **4–5:** ask "Want me to add it to your try list?" If yes, save_place
   with the recommendation_id, so you'll ask me how it went next time.
 
